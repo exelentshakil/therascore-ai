@@ -39,17 +39,25 @@ interface SessionWorkspaceProps {
   selectedSessionId?: string;
   onSelectSession?: (id: string) => void;
   onAiScoreGenerated?: (data: { dbtScore: number; cbtScore: number; latencyMs: number }) => void;
+  initialTab?: "scorecard" | "soap" | "coaching" | "custom_test";
 }
 
 export function SessionWorkspace({ 
   selectedSessionId: propSessionId, 
   onSelectSession,
-  onAiScoreGenerated 
+  onAiScoreGenerated,
+  initialTab: propTab 
 }: SessionWorkspaceProps) {
   const [internalSessionId, setInternalSessionId] = useState<string>("sess_dbt_01");
   const selectedSessionId = propSessionId || internalSessionId;
   const setSelectedSessionId = onSelectSession || setInternalSessionId;
-  const [activeTab, setActiveTab] = useState<"scorecard" | "soap" | "coaching" | "custom_test">("scorecard");
+  const [activeTab, setActiveTab] = useState<"scorecard" | "soap" | "coaching" | "custom_test">(propTab || "scorecard");
+
+  React.useEffect(() => {
+    if (propTab) {
+      setActiveTab(propTab);
+    }
+  }, [propTab]);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentSeconds, setCurrentSeconds] = useState<number>(85); // 01:25 default
   const [selectedItemAnchor, setSelectedItemAnchor] = useState<string | null>("dbt_item_1");

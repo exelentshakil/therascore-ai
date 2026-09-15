@@ -161,6 +161,60 @@ export function Header({ onOpenCommand, onOpenChaos, onSelectTab, activeTab }: H
 
         </div>
       </div>
+
+      {/* Mobile / Tablet Horizontal Navigation Scroll */}
+      <div className="lg:hidden border-t border-[var(--color-border)] bg-[var(--color-surface)] py-2 px-4 overflow-x-auto no-scrollbar flex items-center gap-1.5 shrink-0">
+        <button
+          onClick={() => onSelectTab("workspace")}
+          className={`px-3 py-1 text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 ${
+            activeTab === "workspace"
+              ? "bg-teal-600 text-white shadow-xs"
+              : "bg-[var(--color-panel-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border border-[var(--color-border)]"
+          }`}
+        >
+          Session Review
+        </button>
+        <button
+          onClick={() => onSelectTab("deid")}
+          className={`px-3 py-1 text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 ${
+            activeTab === "deid"
+              ? "bg-teal-600 text-white shadow-xs"
+              : "bg-[var(--color-panel-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border border-[var(--color-border)]"
+          }`}
+        >
+          PHI Redactor
+        </button>
+        <button
+          onClick={() => onSelectTab("workflow")}
+          className={`px-3 py-1 text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 ${
+            activeTab === "workflow"
+              ? "bg-teal-600 text-white shadow-xs"
+              : "bg-[var(--color-panel-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border border-[var(--color-border)]"
+          }`}
+        >
+          Pipeline DAG
+        </button>
+        <button
+          onClick={() => onSelectTab("blueprints")}
+          className={`px-3 py-1 text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 ${
+            activeTab === "blueprints"
+              ? "bg-teal-600 text-white shadow-xs"
+              : "bg-[var(--color-panel-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border border-[var(--color-border)]"
+          }`}
+        >
+          Svelte & Azure Blueprints
+        </button>
+        <button
+          onClick={() => onSelectTab("roi")}
+          className={`px-3 py-1 text-xs font-semibold rounded-md transition-all whitespace-nowrap shrink-0 ${
+            activeTab === "roi"
+              ? "bg-teal-600 text-white shadow-xs"
+              : "bg-[var(--color-panel-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] border border-[var(--color-border)]"
+          }`}
+        >
+          Clinical ROI
+        </button>
+      </div>
     </header>
   );
 }
